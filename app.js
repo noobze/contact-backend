@@ -111,7 +111,10 @@ app.get("/admin/fetch", async (req, res) => {
 */
 
 // Start the server at port 3000 
-app.listen(3000 , ()=>{
-    console.log("Server Started at port 3000");
-})
+if (!process.env.PROD) {
+  app.listen(3000 , ()=>{
+      console.log("Server Started at port 3000");
+  })
+}
 
+module.exports = app;
